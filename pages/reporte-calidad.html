@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reporte Calidad – SACR</title>
+  <link rel="stylesheet" href="../css/sacr.css" />
+</head>
+<body>
+  <div class="app">
+<nav class="sidebar">
+  <div class="brand"><div class="logo">S</div><span>SACR</span></div>
+  <div class="group-title">Principal</div>
+  <a class="nav-link" href="dashboard.html"><span class="ico">▦</span> Dashboard</a>
+  <div class="group-title">Operaciones</div>
+  <a class="nav-link" href="reservas.html"><span class="ico">📅</span> Reservas</a>
+  <a class="nav-link" href="clientes.html"><span class="ico">👤</span> Clientes</a>
+  <a class="nav-link" href="servicios.html"><span class="ico">🧭</span> Servicios</a>
+  <div class="group-title">Atención</div>
+  <a class="nav-link" href="reclamos.html"><span class="ico">⚠</span> Reclamos</a>
+  <a class="nav-link" href="notificaciones.html"><span class="ico">🔔</span> Notificaciones</a>
+  <div class="group-title">Reportes</div>
+  <a class="nav-link" href="reporte-ventas.html"><span class="ico">📈</span> Ventas</a>
+  <a class="nav-link" href="reporte-calidad.html"><span class="ico">🧪</span> Calidad</a>
+  <div class="group-title">Administración</div>
+  <a class="nav-link" href="usuarios.html"><span class="ico">👥</span> Usuarios</a>
+  <a class="nav-link" href="auditoria.html"><span class="ico">🛡</span> Auditoría</a>
+  <a class="nav-link" href="../login.html"><span class="ico">⎋</span> Cerrar sesión</a>
+</nav>
+    <div class="main">
+      <header class="topbar">
+        <div class="user"><span class="topbar-role">Operador</span><div class="avatar">MA</div></div>
+      </header>
+      <main>
+<div class="page">
+  <div class="page-header"><div><h1>Reporte de Calidad</h1><p>Indicadores de incidencias y atención de reclamos.</p></div>
+    <div style="display:flex;gap:.5rem"><button class="btn">⤓ PDF</button><button class="btn btn-primary">↻ Generar</button></div>
+  </div>
+  <div class="card" style="margin-bottom:1rem"><div class="card-body">
+    <div class="form-row" style="grid-template-columns:repeat(3,1fr)">
+      <div class="form-group"><label>Fecha inicio</label><input type="date" class="input" /></div>
+      <div class="form-group"><label>Fecha fin</label><input type="date" class="input" /></div>
+      <div class="form-group"><label>Servicio</label><select class="select"><option>Todos</option><option>City Tour Lima</option></select></div>
+    </div>
+  </div></div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Reservas en periodo</div><div class="value">312</div></div>
+    <div class="kpi"><div class="label">Reclamos recibidos</div><div class="value">26</div></div>
+    <div class="kpi"><div class="label">% Incidencias</div><div class="value">8.3%</div><div class="delta down">▼ 1.2 pp</div></div>
+    <div class="kpi"><div class="label">Tiempo prom. atención</div><div class="value">2.4 d</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+    <div class="card"><div class="card-header"><h3>Procedencia de reclamos</h3></div><div class="card-body">
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem">
+        <li><div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.25rem"><span>Procede</span><b>14 (54%)</b></div><div style="height:8px;background:var(--surface-2);border-radius:4px"><div style="width:54%;height:100%;background:var(--success);border-radius:4px"></div></div></li>
+        <li><div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.25rem"><span>No procede</span><b>8 (31%)</b></div><div style="height:8px;background:var(--surface-2);border-radius:4px"><div style="width:31%;height:100%;background:var(--danger);border-radius:4px"></div></div></li>
+        <li><div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.25rem"><span>Pendientes</span><b>4 (15%)</b></div><div style="height:8px;background:var(--surface-2);border-radius:4px"><div style="width:15%;height:100%;background:var(--warning);border-radius:4px"></div></div></li>
+      </ul>
+    </div></div>
+    <div class="card"><div class="card-header"><h3>Reclamos por servicio</h3></div><div class="card-body">
+      <div class="chart-bars">
+        <div class="bar" style="height:80%"><span>City</span></div>
+        <div class="bar" style="height:55%"><span>MaPi</span></div>
+        <div class="bar" style="height:30%"><span>Ball.</span></div>
+        <div class="bar" style="height:60%"><span>Valle</span></div>
+        <div class="bar" style="height:25%"><span>Para.</span></div>
+      </div>
+    </div></div>
+  </div>
+  <div class="card" style="margin-top:1rem">
+    <div class="card-header"><h3>Detalle</h3></div>
+    <table class="table">
+      <thead><tr><th>#</th><th>Reserva</th><th>Servicio</th><th>Fecha</th><th>Procedencia</th><th>Resolución</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>BK-10260</td><td>Islas Ballestas</td><td>02/05/2026</td><td><span class="badge procede">Procede</span></td><td>Reembolso emitido</td></tr>
+        <tr><td>2</td><td>BK-10220</td><td>Valle Sagrado</td><td>20/04/2026</td><td><span class="badge no-procede">No procede</span></td><td>Promo no aplicaba</td></tr>
+        <tr><td>3</td><td>BK-10293</td><td>City Tour Lima</td><td>11/05/2026</td><td><span class="badge pendiente">Pendiente</span></td><td>—</td></tr>
+        <tr><td>4</td><td>BK-10288</td><td>Machu Picchu</td><td>09/05/2026</td><td><span class="badge atencion">En atención</span></td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+      </main>
+    </div>
+  </div>
+  <script src="../js/app.js"></script>
+</body>
+</html>

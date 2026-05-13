@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iniciar sesión – SACR</title>
+  <link rel="stylesheet" href="css/sacr.css" />
+</head>
+<body>
+  <div class="auth-wrap">
+    <aside class="auth-hero">
+      <div>
+        <div style="display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.1rem">
+          <div style="width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.15);display:grid;place-items:center">S</div>
+          SACR
+        </div>
+        <h2 style="margin-top:4rem">Sistema de Atención<br/>de Clientes y Reservas</h2>
+        <p>Gestiona reservas Bokun, atiende reclamos y monitorea la calidad de tus servicios turísticos en un solo lugar.</p>
+      </div>
+      <small style="color:rgba(255,255,255,.6)">© 2026 PUCP – SACR</small>
+    </aside>
+    <section class="auth-form-wrap">
+      <form class="auth-form" action="pages/dashboard.html">
+        <h1>Bienvenido</h1>
+        <p class="muted">Ingresa tus credenciales para continuar</p>
+        <div class="form-group"><label>Correo electrónico</label><input class="input" type="email" placeholder="usuario@empresa.com" required /></div>
+        <div class="form-group"><label>Contraseña</label><input class="input" type="password" placeholder="••••••••" required /></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+          <label style="display:flex;gap:.4rem;font-size:.85rem;color:var(--text-muted)"><input type="checkbox" /> Recordarme</label>
+          <a href="#" style="font-size:.85rem;color:var(--primary)">¿Olvidaste tu contraseña?</a>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Iniciar sesión</button>
+      </form>
+    </section>
+  </div>
+</body>
+</html>

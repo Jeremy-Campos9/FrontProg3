@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notificaciones – SACR</title>
+  <link rel="stylesheet" href="../css/sacr.css" />
+</head>
+<body>
+  <div class="app">
+<nav class="sidebar">
+  <div class="brand"><div class="logo">S</div><span>SACR</span></div>
+  <div class="group-title">Principal</div>
+  <a class="nav-link" href="dashboard.html"><span class="ico">▦</span> Dashboard</a>
+  <div class="group-title">Operaciones</div>
+  <a class="nav-link" href="reservas.html"><span class="ico">📅</span> Reservas</a>
+  <a class="nav-link" href="clientes.html"><span class="ico">👤</span> Clientes</a>
+  <a class="nav-link" href="servicios.html"><span class="ico">🧭</span> Servicios</a>
+  <div class="group-title">Atención</div>
+  <a class="nav-link" href="reclamos.html"><span class="ico">⚠</span> Reclamos</a>
+  <a class="nav-link" href="notificaciones.html"><span class="ico">🔔</span> Notificaciones</a>
+  <div class="group-title">Reportes</div>
+  <a class="nav-link" href="reporte-ventas.html"><span class="ico">📈</span> Ventas</a>
+  <a class="nav-link" href="reporte-calidad.html"><span class="ico">🧪</span> Calidad</a>
+  <div class="group-title">Administración</div>
+  <a class="nav-link" href="usuarios.html"><span class="ico">👥</span> Usuarios</a>
+  <a class="nav-link" href="auditoria.html"><span class="ico">🛡</span> Auditoría</a>
+  <a class="nav-link" href="../login.html"><span class="ico">⎋</span> Cerrar sesión</a>
+</nav>
+    <div class="main">
+      <header class="topbar">
+        <div class="user"><span class="topbar-role">Operador</span><div class="avatar">MA</div></div>
+      </header>
+      <main>
+<div class="page">
+  <div class="page-header"><div><h1>Notificaciones</h1><p>Eventos del sistema y alertas operativas.</p></div><button class="btn" id="btnMarcarTodasLeidas">Marcar todas como leídas</button></div>
+  <div class="card"><div class="card-body" style="padding:0">
+    <div class="notif-item" data-leida="false" style="display:flex;gap:.85rem;padding:1rem 1.25rem;border-bottom:1px solid var(--border);background:#f0f9ff"><div style="width:36px;height:36px;border-radius:50%;background:#16a34a;display:grid;place-items:center;color:white">✓</div><div style="flex:1"><div style="display:flex;justify-content:space-between"><b>NUEVA RESERVA</b><small style="color:var(--text-muted)">12/05 09:14</small></div><p style="margin:.25rem 0 0;color:var(--text-muted);font-size:.9rem">Nueva reserva BK-10297 desde Bokun – Sofía López.</p></div></div>
+    <div class="notif-item" data-leida="false" style="display:flex;gap:.85rem;padding:1rem 1.25rem;border-bottom:1px solid var(--border);background:#f0f9ff"><div style="width:36px;height:36px;border-radius:50%;background:#f59e0b;display:grid;place-items:center;color:white">!</div><div style="flex:1"><div style="display:flex;justify-content:space-between;gap:.75rem"><b>RECLAMO PENDIENTE</b><div style="display:flex;gap:.5rem;align-items:center"><small style="color:var(--text-muted)">12/05 07:00</small><button class="btn btn-sm btn-primary btn-atender-notif">Atender</button></div></div><p style="margin:.25rem 0 0;color:var(--text-muted);font-size:.9rem">Reclamo #1 sobre BK-10293 requiere atención.</p></div></div>
+    <div class="notif-item" data-leida="true" style="display:flex;gap:.85rem;padding:1rem 1.25rem;border-bottom:1px solid var(--border)"><div style="width:36px;height:36px;border-radius:50%;background:#dc2626;display:grid;place-items:center;color:white">✕</div><div style="flex:1"><div style="display:flex;justify-content:space-between"><b>ANULACION RESERVA</b><small style="color:var(--text-muted)">12/05 03:00</small></div><p style="margin:.25rem 0 0;color:var(--text-muted);font-size:.9rem">Reserva BK-10296 fue anulada por el cliente.</p></div></div>
+    <div class="notif-item" data-leida="true" style="display:flex;gap:.85rem;padding:1rem 1.25rem"><div style="width:36px;height:36px;border-radius:50%;background:#0ea5e9;display:grid;place-items:center;color:white">✓</div><div style="flex:1"><div style="display:flex;justify-content:space-between"><b>RECLAMO RESUELTO</b><small style="color:var(--text-muted)">11/05 15:20</small></div><p style="margin:.25rem 0 0;color:var(--text-muted);font-size:.9rem">Reclamo #3 resuelto como PROCEDE.</p></div></div>
+  </div></div>
+</div>
+      </main>
+    </div>
+  </div>
+  <script src="../js/app.js"></script>
+</body>
+</html>

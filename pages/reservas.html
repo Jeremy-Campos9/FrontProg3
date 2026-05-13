@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reservas – SACR</title>
+  <link rel="stylesheet" href="../css/sacr.css" />
+</head>
+<body>
+  <div class="app">
+<nav class="sidebar">
+  <div class="brand"><div class="logo">S</div><span>SACR</span></div>
+  <div class="group-title">Principal</div>
+  <a class="nav-link" href="dashboard.html"><span class="ico">▦</span> Dashboard</a>
+  <div class="group-title">Operaciones</div>
+  <a class="nav-link" href="reservas.html"><span class="ico">📅</span> Reservas</a>
+  <a class="nav-link" href="clientes.html"><span class="ico">👤</span> Clientes</a>
+  <a class="nav-link" href="servicios.html"><span class="ico">🧭</span> Servicios</a>
+  <div class="group-title">Atención</div>
+  <a class="nav-link" href="reclamos.html"><span class="ico">⚠</span> Reclamos</a>
+  <a class="nav-link" href="notificaciones.html"><span class="ico">🔔</span> Notificaciones</a>
+  <div class="group-title">Reportes</div>
+  <a class="nav-link" href="reporte-ventas.html"><span class="ico">📈</span> Ventas</a>
+  <a class="nav-link" href="reporte-calidad.html"><span class="ico">🧪</span> Calidad</a>
+  <div class="group-title">Administración</div>
+  <a class="nav-link" href="usuarios.html"><span class="ico">👥</span> Usuarios</a>
+  <a class="nav-link" href="auditoria.html"><span class="ico">🛡</span> Auditoría</a>
+  <a class="nav-link" href="../login.html"><span class="ico">⎋</span> Cerrar sesión</a>
+</nav>
+    <div class="main">
+      <header class="topbar">
+        <div class="user"><span class="topbar-role">Operador</span><div class="avatar">MA</div></div>
+      </header>
+      <main>
+<div class="page">
+  <div class="page-header">
+    <div><h1>Gestión de Reservas</h1><p>Reservas sincronizadas desde Bokun y registradas manualmente.</p></div>
+    <div style="display:flex;gap:.5rem"><button class="btn">↻ Sincronizar Bokun</button><button class="btn btn-primary" id="btnNuevaReserva" data-open="#modalReserva">+ Nueva reserva</button></div>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Total</div><div class="value" id="resKpiTotal">0</div></div>
+    <div class="kpi"><div class="label">Confirmadas</div><div class="value" id="resKpiConfirmadas">0</div></div>
+    <div class="kpi"><div class="label">Pendientes</div><div class="value" id="resKpiPendientes">0</div></div>
+    <div class="kpi"><div class="label">Anuladas</div><div class="value" id="resKpiAnuladas">0</div></div>
+  </div>
+  <div class="card"><div class="card-body">
+    <div class="toolbar">
+      <input class="input" id="resBuscar" placeholder="Buscar por código, cliente o servicio..." style="max-width:340px" />
+      <select class="select" id="resFiltroEstado" style="max-width:200px"><option>Todos los estados</option><option>CONFIRMADA</option><option>PENDIENTE</option><option>ANULADA</option></select>
+      <input type="date" class="input" id="resFiltroFecha" style="max-width:170px" />
+      <div class="grow"></div>
+    </div>
+    <table class="table" id="tablaReservas">
+      <thead><tr><th>Código</th><th>Cliente</th><th>Servicio</th><th>Fecha servicio</th><th>Pax</th><th>Monto</th><th>Estado</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><b>BK-10293</b></td><td>Lucía Fernández</td><td>City Tour Lima</td><td>14/05/2026</td><td>2</td><td>$ 120.00</td><td><span class="badge confirmada">Confirmada</span></td><td class="actions"><button class="btn btn-sm" data-open="#modalReserva">Ver</button><button class="btn btn-sm">Modificar</button><button class="btn btn-sm btn-danger">Anular</button></td></tr>
+        <tr><td><b>BK-10294</b></td><td>James Carter</td><td>Machu Picchu Full Day</td><td>15/05/2026</td><td>4</td><td>$ 480.00</td><td><span class="badge confirmada">Confirmada</span></td><td class="actions"><button class="btn btn-sm" data-open="#modalReserva">Ver</button><button class="btn btn-sm">Modificar</button><button class="btn btn-sm btn-danger">Anular</button></td></tr>
+        <tr><td><b>BK-10295</b></td><td>Marta Ríos</td><td>Islas Ballestas</td><td>16/05/2026</td><td>1</td><td>$ 75.00</td><td><span class="badge pendiente">Pendiente</span></td><td class="actions"><button class="btn btn-sm" data-open="#modalReserva">Ver</button><button class="btn btn-sm">Modificar</button><button class="btn btn-sm btn-danger">Anular</button></td></tr>
+        <tr><td><b>BK-10296</b></td><td>Pedro Núñez</td><td>Valle Sagrado</td><td>16/05/2026</td><td>3</td><td>$ 210.00</td><td><span class="badge anulada">Anulada</span></td><td class="actions"><button class="btn btn-sm" data-open="#modalReserva">Ver</button></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+
+<div class="modal" id="modalReserva">
+  <div class="card">
+    <div class="card-header"><h3 id="res-titulo">Detalle de reserva</h3><button class="btn btn-ghost" data-close>✕</button></div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group"><label>Código Bokun</label><input class="input" id="res-codigo" /></div>
+        <div class="form-group"><label>Servicio</label><select class="select" id="res-servicio"><option>City Tour Lima</option><option>Machu Picchu Full Day</option><option>Islas Ballestas</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Cliente</label><input class="input" id="res-cliente" /></div>
+        <div class="form-group"><label>Pax</label><input class="input" id="res-pax" type="number" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Fecha del servicio</label><input class="input" id="res-fecha" type="date" /></div>
+        <div class="form-group"><label>Monto (USD)</label><input class="input" id="res-monto" type="number" step="0.01" /></div>
+      </div>
+      <div class="form-group"><label>Estado</label><select class="select" id="res-estado"><option>CONFIRMADA</option><option>PENDIENTE</option><option>ANULADA</option></select></div>
+      <div style="display:flex;gap:.5rem;justify-content:flex-end">
+        <button class="btn" data-close>Cancelar</button>
+        <button class="btn btn-primary" id="btnGuardarReserva">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+      </main>
+    </div>
+  </div>
+  <script src="../js/app.js"></script>
+</body>
+</html>

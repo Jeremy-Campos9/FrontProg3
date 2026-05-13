@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard – SACR</title>
+  <link rel="stylesheet" href="../css/sacr.css" />
+</head>
+<body>
+  <div class="app">
+<nav class="sidebar">
+  <div class="brand"><div class="logo">S</div><span>SACR</span></div>
+  <div class="group-title">Principal</div>
+  <a class="nav-link" href="dashboard.html"><span class="ico">▦</span> Dashboard</a>
+  <div class="group-title">Operaciones</div>
+  <a class="nav-link" href="reservas.html"><span class="ico">📅</span> Reservas</a>
+  <a class="nav-link" href="clientes.html"><span class="ico">👤</span> Clientes</a>
+  <a class="nav-link" href="servicios.html"><span class="ico">🧭</span> Servicios</a>
+  <div class="group-title">Atención</div>
+  <a class="nav-link" href="reclamos.html"><span class="ico">⚠</span> Reclamos</a>
+  <a class="nav-link" href="notificaciones.html"><span class="ico">🔔</span> Notificaciones</a>
+  <div class="group-title">Reportes</div>
+  <a class="nav-link" href="reporte-ventas.html"><span class="ico">📈</span> Ventas</a>
+  <a class="nav-link" href="reporte-calidad.html"><span class="ico">🧪</span> Calidad</a>
+  <div class="group-title">Administración</div>
+  <a class="nav-link" href="usuarios.html"><span class="ico">👥</span> Usuarios</a>
+  <a class="nav-link" href="auditoria.html"><span class="ico">🛡</span> Auditoría</a>
+  <a class="nav-link" href="../login.html"><span class="ico">⎋</span> Cerrar sesión</a>
+</nav>
+    <div class="main">
+      <header class="topbar">
+        <div class="user"><span class="topbar-role">Operador</span><div class="avatar">MA</div></div>
+      </header>
+      <main>
+<div class="page">
+  <div class="page-header">
+    <div><h1>Dashboard</h1><p>Vista general de operaciones</p></div>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Reservas hoy</div><div class="value" id="dashKpiReservas">0</div><div class="delta" id="dashKpiReservasDelta"></div></div>
+    <div class="kpi"><div class="label">Ventas (USD)</div><div class="value" id="dashKpiVentas">$ 0.00</div><div class="delta" id="dashKpiVentasDelta"></div></div>
+    <div class="kpi"><div class="label">Reclamos pendientes</div><div class="value" id="dashKpiReclamosPend">0</div><div class="delta" id="dashKpiReclamosPendDelta"></div></div>
+    <div class="kpi"><div class="label">% Incidencias</div><div class="value" id="dashKpiIncidencias">0%</div><div class="delta" id="dashKpiIncidenciasDelta"></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:1rem">
+    <div class="card">
+      <div class="card-header"><h3>Ventas últimos 7 días</h3><span style="color:var(--text-muted);font-size:.85rem">USD</span></div>
+      <div class="card-body">
+        <div class="chart-bars">
+          <div class="bar" style="height:45%"><span>Lun</span></div>
+          <div class="bar" style="height:60%"><span>Mar</span></div>
+          <div class="bar" style="height:35%"><span>Mié</span></div>
+          <div class="bar" style="height:75%"><span>Jue</span></div>
+          <div class="bar" style="height:90%"><span>Vie</span></div>
+          <div class="bar" style="height:80%"><span>Sáb</span></div>
+          <div class="bar" style="height:50%"><span>Dom</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>Reclamos por estado</h3></div>
+      <div class="card-body">
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem">
+          <li style="display:flex;justify-content:space-between"><span class="badge pendiente">Pendiente</span><b id="dashReclPend">1</b></li>
+          <li style="display:flex;justify-content:space-between"><span class="badge atencion">En atención</span><b id="dashReclAtn">1</b></li>
+          <li style="display:flex;justify-content:space-between"><span class="badge procede">Procede</span><b id="dashReclProc">1</b></li>
+          <li style="display:flex;justify-content:space-between"><span class="badge no-procede">No procede</span><b id="dashReclNoProc">1</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:1rem">
+    <div class="card-header"><h3>Últimas reservas</h3><a href="reservas.html" class="btn btn-sm">Ver todas →</a></div>
+    <table class="table">
+      <thead><tr><th>Código</th><th>Cliente</th><th>Servicio</th><th>Fecha</th><th>Monto</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td>BK-10293</td><td>Lucía Fernández</td><td>City Tour Lima</td><td>14/05/2026</td><td>$ 120</td><td><span class="badge confirmada">Confirmada</span></td></tr>
+        <tr><td>BK-10294</td><td>James Carter</td><td>Machu Picchu Full Day</td><td>15/05/2026</td><td>$ 480</td><td><span class="badge confirmada">Confirmada</span></td></tr>
+        <tr><td>BK-10295</td><td>Marta Ríos</td><td>Islas Ballestas</td><td>16/05/2026</td><td>$ 75</td><td><span class="badge pendiente">Pendiente</span></td></tr>
+        <tr><td>BK-10296</td><td>Pedro Núñez</td><td>Valle Sagrado</td><td>16/05/2026</td><td>$ 210</td><td><span class="badge anulada">Anulada</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+      </main>
+    </div>
+  </div>
+  <script src="../js/app.js"></script>
+</body>
+</html>

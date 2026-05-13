@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auditoría – SACR</title>
+  <link rel="stylesheet" href="../css/sacr.css" />
+</head>
+<body>
+  <div class="app">
+<nav class="sidebar">
+  <div class="brand"><div class="logo">S</div><span>SACR</span></div>
+  <div class="group-title">Principal</div>
+  <a class="nav-link" href="dashboard.html"><span class="ico">▦</span> Dashboard</a>
+  <div class="group-title">Operaciones</div>
+  <a class="nav-link" href="reservas.html"><span class="ico">📅</span> Reservas</a>
+  <a class="nav-link" href="clientes.html"><span class="ico">👤</span> Clientes</a>
+  <a class="nav-link" href="servicios.html"><span class="ico">🧭</span> Servicios</a>
+  <div class="group-title">Atención</div>
+  <a class="nav-link" href="reclamos.html"><span class="ico">⚠</span> Reclamos</a>
+  <a class="nav-link" href="notificaciones.html"><span class="ico">🔔</span> Notificaciones</a>
+  <div class="group-title">Reportes</div>
+  <a class="nav-link" href="reporte-ventas.html"><span class="ico">📈</span> Ventas</a>
+  <a class="nav-link" href="reporte-calidad.html"><span class="ico">🧪</span> Calidad</a>
+  <div class="group-title">Administración</div>
+  <a class="nav-link" href="usuarios.html"><span class="ico">👥</span> Usuarios</a>
+  <a class="nav-link" href="auditoria.html"><span class="ico">🛡</span> Auditoría</a>
+  <a class="nav-link" href="../login.html"><span class="ico">⎋</span> Cerrar sesión</a>
+</nav>
+    <div class="main">
+      <header class="topbar">
+        <div class="user"><span class="topbar-role">Operador</span><div class="avatar">MA</div></div>
+      </header>
+      <main>
+<div class="page">
+  <div class="page-header"><div><h1>Log de Auditoría</h1><p>Registro de acciones realizadas por usuarios.</p></div></div>
+  <div class="card"><div class="card-body">
+    <div class="toolbar">
+      <input class="input" id="audBuscar" placeholder="Buscar por usuario, comando o descripción..." style="max-width:340px" />
+      <input type="date" class="input" id="audFechaInicio" style="max-width:170px" />
+      <input type="date" class="input" id="audFechaFin" style="max-width:170px" />
+      <div class="grow"></div>
+    </div>
+    <table class="table">
+      <thead><tr><th>#</th><th>Fecha</th><th>Usuario</th><th>Comando</th><th>Descripción</th><th>Ubicación</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>12/05/2026 09:14</td><td>m.alarcon</td><td><code class="code-pill">LOGIN</code></td><td>Inicio de sesión exitoso</td><td style="color:var(--text-muted)">Lima, PE</td></tr>
+        <tr><td>2</td><td>12/05/2026 09:05</td><td>c.rojas</td><td><code class="code-pill">REPORTE_GENERAR</code></td><td>Generó reporte de ventas Mayo 2026</td><td style="color:var(--text-muted)">Lima, PE</td></tr>
+        <tr><td>3</td><td>12/05/2026 08:00</td><td>l.vega</td><td><code class="code-pill">RESERVA_ANULAR</code></td><td>Anuló reserva BK-10296</td><td style="color:var(--text-muted)">Cusco, PE</td></tr>
+        <tr><td>4</td><td>12/05/2026 06:30</td><td>d.mendoza</td><td><code class="code-pill">RECLAMO_REGISTRAR</code></td><td>Registró reclamo #4</td><td style="color:var(--text-muted)">Lima, PE</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+      </main>
+    </div>
+  </div>
+  <script src="../js/app.js"></script>
+</body>
+</html>
