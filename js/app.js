@@ -1116,6 +1116,57 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ══════════════════════════════════════════
+     9. PÁGINA REPORTE CALIDAD (Filtro de servicio)
+  ══════════════════════════════════════════ */
+  const filtroServicio = document.querySelector("#filtroServicio");
+  const tablaCalidad = document.querySelector(".page .table");
+  if (filtroServicio && tablaCalidad) {
+    // Capturar datos originales de la tabla
+    let datosOriginales = Array.from(tablaCalidad.querySelectorAll("tbody tr")).map(tr => {
+      const celdas = tr.querySelectorAll("td");
+      return {
+        numero: celdas[0]?.textContent.trim() || "",
+        reserva: celdas[1]?.textContent.trim() || "",
+        servicio: celdas[2]?.textContent.trim() || "",
+        fecha: celdas[3]?.textContent.trim() || "",
+        procedenciaHTML: celdas[4]?.innerHTML || "",
+        resolucion: celdas[5]?.textContent.trim() || "",
+      };
+    });
+
+    function renderTablaCalidad(datos) {
+      const tbody = tablaCalidad.querySelector("tbody");
+      if (!datos.length) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:2rem">No hay reclamos para el servicio seleccionado.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = datos.map(d => `
+        <tr>
+          <td>${d.numero}</td>
+          <td>${d.reserva}</td>
+          <td>${d.servicio}</td>
+          <td>${d.fecha}</td>
+          <td>${d.procedenciaHTML}</td>
+          <td>${d.resolucion}</td>
+        </tr>
+      `).join("");
+    }
+
+    filtroServicio.addEventListener("change", () => {
+      const servicioSeleccionado = filtroServicio.value;
+      let datosFiltrados;
+      
+      if (servicioSeleccionado === "") {
+        datosFiltrados = datosOriginales;
+      } else {
+        datosFiltrados = datosOriginales.filter(d => d.servicio === servicioSeleccionado);
+      }
+      
+      renderTablaCalidad(datosFiltrados);
+    });
+  }
+
+  /* ══════════════════════════════════════════
      5. Modales genéricos (otras páginas)
   ══════════════════════════════════════════ */
   document.querySelectorAll("[data-open]").forEach(btn => {
