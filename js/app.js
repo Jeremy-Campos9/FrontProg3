@@ -981,6 +981,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (rcKpiAtn) rcKpiAtn.textContent = String(atn);
       if (rcKpiProc) rcKpiProc.textContent = String(proc);
       if (rcKpiNoProc) rcKpiNoProc.textContent = String(noProc);
+      // Guardar KPIs en localStorage para que otras páginas (ej. dashboard) puedan leerlos
+      try {
+        const payload = { pend, atn, proc, noProc, total: list.length };
+        localStorage.setItem('sacr_reclamos_kpis', JSON.stringify(payload));
+      } catch (e) {
+        // silencioso si storage no está disponible
+      }
     }
 
     function getReclamosFiltrados() {
@@ -1169,6 +1176,48 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ══════════════════════════════════════════
      5. Modales genéricos (otras páginas)
   ══════════════════════════════════════════ */
+  /* ══════════════════════════════════════════
+     DASHBOARD: leer KPIs de reclamos desde localStorage y renderizar gráfico
+  ══════════════════════════════════════════ */
+  (function renderDashboardReclamosFromStorage() {
+    const elPend = document.querySelector('#dashReclPend');
+    const elAtn = document.querySelector('#dashReclAtn');
+    const elProc = document.querySelector('#dashReclProc');
+    const elNoProc = document.querySelector('#dashReclNoProc');
+    const elBarPend = document.querySelector('#dashBarPend');
+    const elBarAtn = document.querySelector('#dashBarAtn');
+    const elBarProc = document.querySelector('#dashBarProc');
+    const elBarNoProc = document.querySelector('#dashBarNoProc');
+
+    if (!elPend && !elAtn && !elProc && !elNoProc) return; // no estamos en dashboard
+
+    let payload = null;
+    try {
+      const raw = localStorage.getItem('sacr_reclamos_kpis');
+      if (raw) payload = JSON.parse(raw);
+    } catch (e) {
+      payload = null;
+    }
+
+    // Si no hay payload, dejar 0s
+    const pend = payload?.pend || 0;
+    const atn = payload?.atn || 0;
+    const proc = payload?.proc || 0;
+    const noProc = payload?.noProc || 0;
+
+    if (elPend) elPend.textContent = String(pend);
+    if (elAtn) elAtn.textContent = String(atn);
+    if (elProc) elProc.textContent = String(proc);
+    if (elNoProc) elNoProc.textContent = String(noProc);
+
+    // Renderizar barras proporcionalmente
+    const max = Math.max(1, pend, atn, proc, noProc);
+    if (elBarPend) elBarPend.style.height = `${Math.round((pend / max) * 100)}%`;
+    if (elBarAtn) elBarAtn.style.height = `${Math.round((atn / max) * 100)}%`;
+    if (elBarProc) elBarProc.style.height = `${Math.round((proc / max) * 100)}%`;
+    if (elBarNoProc) elBarNoProc.style.height = `${Math.round((noProc / max) * 100)}%`;
+  })();
+
   document.querySelectorAll("[data-open]").forEach(btn => {
     btn.addEventListener("click", () => {
       openModal(btn.getAttribute("data-open"));

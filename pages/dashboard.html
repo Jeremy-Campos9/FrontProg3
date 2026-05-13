@@ -61,11 +61,20 @@
       <div class="card-header"><h3>Reclamos por estado</h3></div>
       <div class="card-body">
         <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem">
-          <li style="display:flex;justify-content:space-between"><span class="badge pendiente">Pendiente</span><b id="dashReclPend">1</b></li>
-          <li style="display:flex;justify-content:space-between"><span class="badge atencion">En atención</span><b id="dashReclAtn">1</b></li>
-          <li style="display:flex;justify-content:space-between"><span class="badge procede">Procede</span><b id="dashReclProc">1</b></li>
-          <li style="display:flex;justify-content:space-between"><span class="badge no-procede">No procede</span><b id="dashReclNoProc">1</b></li>
+          <li style="display:flex;justify-content:space-between"><span class="badge pendiente">Pendiente</span><b id="dashReclPend">0</b></li>
+          <li style="display:flex;justify-content:space-between"><span class="badge atencion">En atención</span><b id="dashReclAtn">0</b></li>
+          <li style="display:flex;justify-content:space-between"><span class="badge procede">Procede</span><b id="dashReclProc">0</b></li>
+          <li style="display:flex;justify-content:space-between"><span class="badge no-procede">No procede</span><b id="dashReclNoProc">0</b></li>
         </ul>
+        <!-- Gráfico de barras dinámico para reclamos por estado -->
+        <div style="margin-top:0.75rem">
+          <div class="chart-bars" id="dashReclChart" style="height:90px;display:flex;align-items:end;gap:.5rem">
+            <div class="bar" id="dashBarPend" style="height:20%"><span>Pend</span></div>
+            <div class="bar" id="dashBarAtn" style="height:20%"><span>Atn</span></div>
+            <div class="bar" id="dashBarProc" style="height:20%"><span>Proc</span></div>
+            <div class="bar" id="dashBarNoProc" style="height:20%"><span>NoP</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
